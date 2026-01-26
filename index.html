@@ -9,36 +9,25 @@
 </head>
 <body>
 
-    <main>
-        <h1>Personal Blog</h1>
+    <div class="container">
+        <h1> My Personal Blog</h1>
 
-        <section class="form_section">
+        <form action="blog" id="blogForm">
+            <input type="text" id="title" placeholder="Post Title">
+            <span class="error" id="titleError"></span>
+
+            <textarea id="content" placeholder="write your Content"></textarea> 
+            <span class="error" id="contentError"></span>
             
-            <div>
-                <label for="newPost"></label>
-                <input type="Form" id="newPost" placeholder="New Post">
-                            
-                <label for="title" >Title</label>
-                <input type="text" id="title" placeholder="blog_title">
-                <span class="error" id="titleError"></span>
+            <br>
+            <br>
+            <button id="submit">Submit</button>
 
-                <label for="textArea" >Title</label>
-                <input type="textArea" id="textArea" placeholder="type your Content">
-                <span class="error" id="textError"></span>
-                
-                <br>
-                <br>
-                <button id="submit">Submit</button>
-            </div>
-            
-        </section>
+        </form>
 
-        <section>
-            <ul id="blogList"></ul>
-        </section>
-
+        <div id="postContainer"></div>
         
-    </main>
+    </div>
 
     
     

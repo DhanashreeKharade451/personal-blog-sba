@@ -1,7 +1,47 @@
-body{
-    background-color: #768caf;
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#textArea{
-    font-size:large;
+body{
+    background-color: #708ab3;
+    padding: 20px;
+}
+
+.container{
+    max-width: 700px;
+    margin: auto;
+    background: whitesmoke;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+h1{
+
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+form input,
+form textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius:7px;
+}
+
+.err{
+    color: red;
+    font-size: 14px;
 }
