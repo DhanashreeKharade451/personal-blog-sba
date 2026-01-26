@@ -14,27 +14,27 @@
 
         <section class="form_section">
             
-            <input type="Form" id="newPost">
-                        
-            <label for="title" >Title</label>
-            <input type="text" id="title" placeholder="blog_title">
-            <span class="error" id="titleError"></span>
+            <div>
+                <label for="newPost"></label>
+                <input type="Form" id="newPost" placeholder="New Post">
+                            
+                <label for="title" >Title</label>
+                <input type="text" id="title" placeholder="blog_title">
+                <span class="error" id="titleError"></span>
 
-            <label for="content">Content</label>
-            <textarea name="content" id="content" placeholder="Blog-content"></textarea>
-            <span class="error" id="contentError"></span>
-            
-            <button id="submit" placeholder="submit">Submit</button>
-            </form>
+                <label for="textArea" >Title</label>
+                <input type="textArea" id="textArea" placeholder="type your Content">
+                <span class="error" id="textError"></span>
+                
+                <br>
+                <br>
+                <button id="submit">Submit</button>
+            </div>
             
         </section>
 
         <section>
-            <ul>
-                <li>
-
-                </li>
-            </ul>
+            <ul id="blogList"></ul>
         </section>
 
         
