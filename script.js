@@ -74,10 +74,37 @@ function validateTitle(){
      if(editPostId){
           for(let i = 0; i< posts.lenght ; i++){
                if(posts[i].id == editPostId){
+                    posts[i].title = titleInput.value;
+                    posts[i].content = contentInput.value;
+                    editPostId =null;
+                    ButtonSubmit.textContent ="Submit";
+                    break;
                     
                }
           }
+     }else{
+              //adding new post to the array
+              posts.push({
+                 id : ++count,
+                 title : titleInput.value;
+                 createdAt : new Date().toLocaleString(),
+
+              });
      }
+
+       //calling local storage function
+       setLocalStorage();
+
+       //calling the function to display the post on the page
+
+       renderPost();
+       blogForm.reset();
+
+       // Adding array to the local storage
+       function setLocalStorage(){
+          localStorage.setItem("Posts",JSON.stringify(posts));
+       }
+
 
   });
 
