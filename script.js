@@ -92,6 +92,8 @@ function validateTitle(){
               });
      }
 
+
+     //
        //calling local storage function
        setLocalStorage();
 
