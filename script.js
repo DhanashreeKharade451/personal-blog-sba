@@ -1,5 +1,5 @@
 let posts = [];
-let editPosts = [];
+let editPostId = null;
 
 const blogForm = document.getElementById("blogForm");
 const contentInput = document.getElementById("content");
@@ -8,6 +8,14 @@ const titleError = document.getElementById("titleError");
 const contentError = document.getElementById("contentError");
 const postsContainer = document.getElementById("postsContainer");
 const ButtonSubmit = document.getElementById("submit");
+
+ButtonSubmit.addEventListener('click',() =>{
+     const newContent =document.createElement('div');
+     newContent.titleInput = title.value;
+     newContent.
+     content.replaceWith(newContent);
+});
+
 
 
 
@@ -19,6 +27,9 @@ window.onload = () =>{
      }
 };
 
+// function displayPost(){
+//      posts.
+// }
 
 //Render Posts
 function renderPosts(){
