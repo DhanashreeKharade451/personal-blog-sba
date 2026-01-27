@@ -34,7 +34,52 @@ function validateTitle(){
      }else{
           titleInput.setCustomValidity("");
      }
+
+     titleError.textContent = titleInput.validationMessage;
+     return blogTitle.checkValidity();
 }
+
+// Blog content validation function for checking empty and minimum length
+
+  function validateContent(){
+     if (contentInput.validity.valueMissing){
+          contentInput.setCustomValidity("Content is Required")
+     }else if(contentInput.validity.tooshort){
+          contentInput.setCustomValidity("content must be at least 6 characters long.");
+     }else if (contentInput.validi.tooLong){
+          blogContent.setCustomValidity("Content should no longer that 100 characters.");
+     }else{
+          contentInput.setCustomValidity("");
+     }
+
+     contentError.textContent = contentInput.validationMessage;
+     return contentInput.checkValidity();
+  }
+
+  ////adding event listener to validate input fields
+  titleInput.addEventListener("input",validateTitle);
+  contentInput.addEventListener("input", validateContent);
+
+  //adding event listener on the form to validate and add post
+  blogForm.addEventListener("submit", function(event){
+     event.preventDefault();
+     const isTitleValid = validateTitle();
+     const isContentValid = validateContent();
+
+     if(!isTitleValid || !isContentValid){
+          return;
+     }
+
+     //checking condition to edit the post
+     if(editPostId){
+          for(let i = 0; i< posts.lenght ; i++){
+               if(posts[i].id == editPostId){
+                    
+               }
+          }
+     }
+
+  });
 
 
 
