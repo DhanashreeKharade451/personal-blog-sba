@@ -22,7 +22,7 @@ let editPostId = null;
 document.addEventListener("DOMContentLoaded", ()=>{
      renderPost();
 
-})
+});
 
 // Blog title validation function for checking empty and minimum length
 function validateTitle(){
@@ -86,7 +86,7 @@ function validateTitle(){
               //adding new post to the array
               posts.push({
                  id : ++count,
-                 title : titleInput.value;
+                 title : titleInput.value,
                  createdAt : new Date().toLocaleString(),
 
               });
@@ -105,6 +105,62 @@ function validateTitle(){
           localStorage.setItem("Posts",JSON.stringify(posts));
        }
 
+       // function to add post to ul list
+       function renderPost(){
+          blogList.innerHTML ="";
+
+       // Loop for accessing the objects in the array
+          for(let i = 0; i < posts.lenght ; i++){
+               // creating listitem and span tags for the post
+               const listitem = document.createElement("li");
+               //adding dataset to the list item for the id
+               listitem.dataset.id = posts[i].id;
+
+               //creating template literals to display the list
+               listitem.innerHTML = `
+                    <div><strong>ID:</strong> ${posts[i].id}</div>
+                    <div><strong>Title:</strong> ${posts[i].title}</div>
+                    <div><strong>Content:</strong> ${posts[i].content}</div>
+                    <div><strong>Created At:</strong> ${posts[i].createdAt}</div>
+                    <div style="margin-top: 8px;">
+                    <button class="edit-button">Edit Post</button>
+                    <button class="delete-button">Delete Post</button> </div>
+
+
+               `
+               //appending listitem to the list
+               blogList.appendChild(listitem);
+          
+          }
+
+       }
+
+       //adding event listener to remove and edit post
+       blogList.addEventListener("click", function(event){
+            //capturing the listitem and getting it's data id when clicking the edit or delete button
+            const listitem = event.target.closest("[data-id]");
+            if (!listitem) return;
+             const id = listitem.dataset.id;
+             //deleting the post
+             if(event.target.classList.contains("delete-button")){
+               for (let i = 0; i < posts.length; i++){
+                    if(posts[i].id == id)
+                         posts.slice(i,1);
+
+               }
+             }
+
+             setLocalStorage();
+             renderPost();
+
+             //Editing the post
+             if(event.target.classList.contains("edit-button")){
+               const postToEdit =posts.find((posts), posts.id);
+               blogTitle.value = postToEdit.content;
+               editPostId = id;
+               blogButton.textContent = "Update Post"
+             }
+       });
 
   });
 
