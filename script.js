@@ -92,8 +92,6 @@ function validateTitle(){
               });
      }
 
-
-     //
        //calling local storage function
        setLocalStorage();
 
@@ -101,6 +99,7 @@ function validateTitle(){
 
        renderPost();
        blogForm.reset();
+});
 
        // Adding array to the local storage
        function setLocalStorage(){
@@ -164,7 +163,7 @@ function validateTitle(){
              }
        });
 
-  });
+ 
 
 
 
