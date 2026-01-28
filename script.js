@@ -36,7 +36,7 @@ function validateTitle(){
      }
 
      titleError.textContent = titleInput.validationMessage;
-     return blogTitle.checkValidity();
+     return titleInput.checkValidity();
 }
 
 // Blog content validation function for checking empty and minimum length
@@ -46,7 +46,7 @@ function validateTitle(){
           contentInput.setCustomValidity("Content is Required")
      }else if(contentInput.validity.tooshort){
           contentInput.setCustomValidity("content must be at least 6 characters long.");
-     }else if (contentInput.validi.tooLong){
+     }else if (contentInput.validity.tooLong){
           blogContent.setCustomValidity("Content should no longer that 100 characters.");
      }else{
           contentInput.setCustomValidity("");
@@ -72,7 +72,7 @@ function validateTitle(){
 
      //checking condition to edit the post
      if(editPostId){
-          for(let i = 0; i< posts.lenght ; i++){
+          for(let i = 0; i< posts.length ; i++){
                if(posts[i].id == editPostId){
                     posts[i].title = titleInput.value;
                     posts[i].content = contentInput.value;
@@ -87,6 +87,7 @@ function validateTitle(){
               posts.push({
                  id : ++count,
                  title : titleInput.value,
+                 content: contentInput.value,
                  createdAt : new Date().toLocaleString(),
 
               });
@@ -111,7 +112,7 @@ function validateTitle(){
           blogList.innerHTML ="";
 
        // Loop for accessing the objects in the array
-          for(let i = 0; i < posts.lenght ; i++){
+          for(let i = 0; i < posts.length ; i++){
                // creating listitem and span tags for the post
                const listitem = document.createElement("li");
                //adding dataset to the list item for the id
@@ -146,7 +147,7 @@ function validateTitle(){
              if(event.target.classList.contains("delete-button")){
                for (let i = 0; i < posts.length; i++){
                     if(posts[i].id == id)
-                         posts.slice(i,1);
+                         posts.splice(i,1);
 
                }
              }
@@ -156,12 +157,18 @@ function validateTitle(){
 
              //Editing the post
              if(event.target.classList.contains("edit-button")){
-               const postToEdit =posts.find((posts), posts.id);
-               blogTitle.value = postToEdit.content;
+               const postToEdit =posts.find((posts)=>posts.id === +id);
+               console.log(posts.find((val)=> val.id === id));
+               titleInput.value = postToEdit.title;
+               contentInput.value = postToEdit.content;
                editPostId = id;
-               blogButton.textContent = "Update Post"
+               ButtonSubmit.textContent = "Update Post"
              }
+
+
        });
+
+
 
  
 
